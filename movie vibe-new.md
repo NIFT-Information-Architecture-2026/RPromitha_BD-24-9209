@@ -13,7 +13,7 @@ This document consolidates all creative choices, structural decisions, UX framew
 
 ## 2. Core Vision & Product Identity
 - **App Name**: **Movie Vibe**
-- **Core Concept**: Emotion-first movie discovery platform where users choose movies by current mood/vibe, filter by language & OTT availability, read/post polaroid reviews with famous dialogues, and curate watchlists.
+- **Core Concept**: Emotion-first movie discovery platform where users choose movies by current mood/vibe, filter by multi-selected languages & OTT availability, read/post polaroid reviews with famous dialogues, and curate watchlists.
 - **Visual Aesthetic**: All-genre coverage wrapped in a **Cinematic Dark Mode** with glowing poster cards and **Polaroid Film-Strip Community Reviews**.
 
 ---
@@ -22,10 +22,10 @@ This document consolidates all creative choices, structural decisions, UX framew
 
 ### 3.1 Interactive Home Gateway Flow
 - **Initial Prompt**: *"Are you in a specific mood today?"*
-- **Option A (`YES, I HAVE A VIBE`)**: Unlocks the 9 Vibe categories, language filter pills, and OTT badges.
+- **Option A (`YES, I HAVE A VIBE`)**: Unlocks the 9 Vibe categories, multi-select language filter pills, and OTT badges.
 - **Option B (`NO, SHOW ME TOP 5 PICKS`)**: Bypasses mood selection to display today's 5 curated top recommendations.
 
-### 3.2 The 9 Core Vibe Categories
+### 3.2 The 9 Core Vibe Categories (All Available)
 1. 🛋️ **Comforting**
 2. ⚡ **High Energy**
 3. 🌙 **Low Energy**
@@ -36,16 +36,19 @@ This document consolidates all creative choices, structural decisions, UX framew
 8. 🌿 **Refreshing**
 9. 🍿 **Horror / Thriller**
 
-### 3.3 OTT Availability Badges
-- Displayed directly on movie cards as visual indicators (`▶ Netflix`, `▶ Prime Video`, `▶ Aha`, `▶ Hotstar`, `▶ Zee5`).
-- Keep as clean visual badges on the card without external app linking.
+### 3.3 Multi-Select Language Filtering
+- Users can select multiple languages simultaneously (e.g. `[✓ Telugu] [✓ Hindi]` to view movies matching any selected language).
 
-### 3.4 Polaroid Community Review System
+### 3.4 OTT Availability Badges
+- Displayed directly on movie cards as visual indicators (`▶ Netflix`, `▶ Prime Video`, `▶ Aha`, `▶ Hotstar`, `▶ Zee5`).
+- Visual badges on the card without external app linking.
+
+### 3.5 Polaroid Community Review System
 - **Visual Style**: Off-white polaroid card (`#FBF9F5`) containing a high-res movie scene still, famous dialogue quote in editorial italic serif typography, author handle, 5-star Vibe Check rating, and like counter.
 - **Review Trigger**: A direct `[ ✍️ Write Vibe Review ]` button placed on each individual Movie Vibe Card (no floating bottom button).
 
-### 3.5 Personal Watchlist Side Drawer
-- Slide-out side panel accessible via the navbar (`🔖 Watchlist`) for saving movie posters with quick item removal.
+### 3.6 Watchlist Slide-Out Side Panel
+- Slide-out side drawer accessible via the navbar (`🔖 Watchlist`) for saving movie posters with quick item removal.
 
 ---
 

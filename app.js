@@ -24,7 +24,7 @@ let MOVIES = [
     id: "m1",
     title: "Hi Nanna",
     year: 2023,
-    language: "Telugu",
+    language: ["Telugu", "Hindi"],
     vibe: "comforting",
     topPick: true,
     poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80",
@@ -45,7 +45,7 @@ let MOVIES = [
     id: "m2",
     title: "RRR",
     year: 2022,
-    language: "Telugu",
+    language: ["Telugu", "Hindi", "Tamil"],
     vibe: "high-energy",
     topPick: true,
     poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80",
@@ -66,7 +66,7 @@ let MOVIES = [
     id: "m3",
     title: "3 Idiots",
     year: 2009,
-    language: "Hindi",
+    language: ["Hindi"],
     vibe: "hilarious",
     topPick: true,
     poster: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=800&q=80",
@@ -87,7 +87,7 @@ let MOVIES = [
     id: "m4",
     title: "Past Lives",
     year: 2023,
-    language: "Korean",
+    language: ["Korean", "English"],
     vibe: "love",
     topPick: true,
     poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
@@ -108,7 +108,7 @@ let MOVIES = [
     id: "m5",
     title: "Manjummel Boys",
     year: 2024,
-    language: "Malayalam",
+    language: ["Malayalam", "Telugu", "Tamil"],
     vibe: "horror-thriller",
     topPick: true,
     poster: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80",
@@ -129,7 +129,7 @@ let MOVIES = [
     id: "m6",
     title: "Premalu",
     year: 2024,
-    language: "Malayalam",
+    language: ["Malayalam", "Telugu"],
     vibe: "weekend",
     topPick: false,
     poster: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&q=80",
@@ -148,9 +148,9 @@ let MOVIES = [
   }
 ];
 
-// Application State
+// Application State — Supporting Multi-Select Languages
 let activeVibe = "all";
-let activeLanguage = "All";
+let activeLanguages = ["All"]; // Array supporting multiple languages
 let activeOtt = "All";
 let isTopPicksMode = false;
 let watchlist = [];
@@ -200,14 +200,17 @@ function renderVibePills() {
   `).join("");
 }
 
-// Render Language Filter Pills
+// Render Language Filter Pills with Multi-Select Indicator
 function renderLanguagePills() {
   const container = document.getElementById("language-pills-container");
-  container.innerHTML = LANGUAGES.map(lang => `
-    <button class="filter-pill ${lang === activeLanguage ? 'active' : ''}" data-lang="${lang}">
-      ${lang}
-    </button>
-  `).join("");
+  container.innerHTML = LANGUAGES.map(lang => {
+    const isSelected = activeLanguages.includes(lang);
+    return `
+      <button class="filter-pill ${isSelected ? 'active' : ''}" data-lang="${lang}">
+        ${isSelected && lang !== 'All' ? '✓ ' : ''}${lang}
+      </button>
+    `;
+  }).join("");
 }
 
 // Render OTT Platform Pills
@@ -252,11 +255,30 @@ function setupEventListeners() {
     filterAndRenderMovies();
   });
 
-  // Language Pill Clicks
+  // Multi-Select Language Pill Clicks
   document.getElementById("language-pills-container").addEventListener("click", (e) => {
     const pill = e.target.closest(".filter-pill");
     if (!pill) return;
-    activeLanguage = pill.dataset.lang;
+    const clickedLang = pill.dataset.lang;
+
+    if (clickedLang === "All") {
+      activeLanguages = ["All"];
+    } else {
+      // Remove "All" if selecting specific languages
+      activeLanguages = activeLanguages.filter(l => l !== "All");
+
+      if (activeLanguages.includes(clickedLang)) {
+        activeLanguages = activeLanguages.filter(l => l !== clickedLang);
+      } else {
+        activeLanguages.push(clickedLang);
+      }
+
+      // If no language selected, default back to "All"
+      if (activeLanguages.length === 0) {
+        activeLanguages = ["All"];
+      }
+    }
+
     renderLanguagePills();
     filterAndRenderMovies();
   });
@@ -270,7 +292,7 @@ function setupEventListeners() {
     filterAndRenderMovies();
   });
 
-  // Watchlist Drawer Controls
+  // Watchlist Slide-Out Drawer Controls
   btnOpenWatchlist.addEventListener("click", toggleWatchlistDrawer);
   btnCloseWatchlist.addEventListener("click", toggleWatchlistDrawer);
   drawerOverlay.addEventListener("click", toggleWatchlistDrawer);
@@ -302,7 +324,7 @@ function enableTopPicksMode() {
   filterAndRenderMovies();
 }
 
-// Filter Movies & Render Cards
+// Filter Movies & Render Cards with Multi-Language Support
 function filterAndRenderMovies() {
   let filtered = MOVIES;
 
@@ -312,23 +334,29 @@ function filterAndRenderMovies() {
     if (activeVibe !== "all") {
       filtered = filtered.filter(m => m.vibe === activeVibe);
     }
-    if (activeLanguage !== "All") {
-      filtered = filtered.filter(m => m.language === activeLanguage);
+    // Multi-Language Filtering Logic
+    if (!activeLanguages.includes("All")) {
+      filtered = filtered.filter(m => {
+        const movieLangs = Array.isArray(m.language) ? m.language : [m.language];
+        return movieLangs.some(l => activeLanguages.includes(l));
+      });
     }
     if (activeOtt !== "All") {
       filtered = filtered.filter(m => m.otts.some(o => o.name === activeOtt));
     }
   }
 
-  resultsCount.textContent = `Showing ${filtered.length} movie${filtered.length === 1 ? '' : 's'}`;
+  const langText = activeLanguages.includes("All") ? "" : ` (${activeLanguages.join(", ")})`;
+  resultsCount.textContent = `Showing ${filtered.length} movie${filtered.length === 1 ? '' : 's'}${langText}`;
 
   if (filtered.length === 0) {
-    movieGrid.innerHTML = `<div class="empty-state">No movies match your selected vibe & filters. Try choosing another vibe!</div>`;
+    movieGrid.innerHTML = `<div class="empty-state">No movies match your selected vibe & language filters. Try selecting another language or vibe!</div>`;
     return;
   }
 
   movieGrid.innerHTML = filtered.map(movie => {
     const isSaved = watchlist.some(w => w.id === movie.id);
+    const langsDisplay = Array.isArray(movie.language) ? movie.language.join(", ") : movie.language;
     return `
       <article class="movie-card" data-id="${movie.id}">
         <div class="poster-wrapper">
@@ -343,7 +371,7 @@ function filterAndRenderMovies() {
           <h3 class="movie-title">${movie.title}</h3>
           <div class="movie-meta">
             <span>${movie.year}</span> • 
-            <span class="meta-pill">${movie.language}</span>
+            <span class="meta-pill">${langsDisplay}</span>
           </div>
 
           <div class="ott-section">
@@ -406,18 +434,21 @@ function renderWatchlistItems() {
     return;
   }
 
-  watchlistItemsContainer.innerHTML = watchlist.map(m => `
-    <div class="drawer-item">
-      <img src="${m.poster}" class="drawer-img" alt="${m.title}">
-      <div class="drawer-item-info">
-        <h4 class="drawer-item-title">${m.title} (${m.year})</h4>
-        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
-          ${m.language} • ${m.otts.map(o => o.name).join(', ')}
+  watchlistItemsContainer.innerHTML = watchlist.map(m => {
+    const langs = Array.isArray(m.language) ? m.language.join(", ") : m.language;
+    return `
+      <div class="drawer-item">
+        <img src="${m.poster}" class="drawer-img" alt="${m.title}">
+        <div class="drawer-item-info">
+          <h4 class="drawer-item-title">${m.title} (${m.year})</h4>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+            ${langs} • ${m.otts.map(o => o.name).join(', ')}
+          </div>
+          <button class="drawer-remove-btn" onclick="toggleWatchlist('${m.id}')">Remove</button>
         </div>
-        <button class="drawer-remove-btn" onclick="toggleWatchlist('${m.id}')">Remove</button>
       </div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
 function toggleWatchlistDrawer() {
