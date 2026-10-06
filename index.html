@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Vibe — Cinema by Mood</title>
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand" id="brand-home">
+        <span class="brand-icon">🎬</span>
+        <span class="brand-title">MOVIE VIBE</span>
+      </div>
+      <div class="nav-actions">
+        <button class="top-picks-btn" id="btn-top-picks-nav">🌟 Today's Top 5</button>
+        <button class="watchlist-btn" id="btn-open-watchlist">
+          🔖 Watchlist <span class="badge" id="watchlist-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- Hero Gateway Section -->
+    <section class="gateway-hero" id="gateway-hero">
+      <div class="hero-card">
+        <span class="hero-tag">FILM CURATION BY MOOD</span>
+        <h1 class="hero-title">Are you in a specific mood today?</h1>
+        <p class="hero-subtitle">Tell us how you're feeling, or let us curate your night with today's unmissable cinema.</p>
+
+        <div class="hero-buttons">
+          <button class="btn btn-primary" id="btn-yes-vibe">✨ Yes, I have a vibe</button>
+          <button class="btn btn-secondary" id="btn-no-mood">🎲 No mood? Show Top 5 Picks</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section (Hidden initially) -->
+    <section class="filters-section hidden" id="filters-section">
+      <div class="filter-group">
+        <h3 class="filter-heading">1. Choose Your Vibe</h3>
+        <div class="vibe-pills" id="vibe-pills-container">
+          <!-- Dynamically Rendered Vibes -->
+        </div>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-group">
+          <h4 class="filter-subheading">Language</h4>
+          <div class="pill-group" id="language-pills-container">
+            <!-- Dynamically Rendered Languages -->
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <h4 class="filter-subheading">OTT Platform</h4>
+          <div class="pill-group" id="ott-pills-container">
+            <!-- Dynamically Rendered OTTs -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Header Status -->
+    <div class="content-header hidden" id="content-header">
+      <h2 class="section-title" id="active-view-title">Featured Cinema</h2>
+      <span class="results-count" id="results-count">Showing movies</span>
+    </div>
+
+    <!-- Movie Grid Section -->
+    <section class="movie-grid hidden" id="movie-grid">
+      <!-- Dynamically Rendered Movie Cards -->
+    </section>
+
+  </main>
+
+  <!-- Watchlist Side Drawer -->
+  <div class="drawer-overlay hidden" id="drawer-overlay"></div>
+  <aside class="watchlist-drawer hidden" id="watchlist-drawer">
+    <div class="drawer-header">
+      <h2>🔖 My Watchlist</h2>
+      <button class="close-drawer-btn" id="btn-close-watchlist">&times;</button>
+    </div>
+    <div class="drawer-body" id="watchlist-items-container">
+      <p class="empty-state">No movies saved yet. Click "+ Watchlist" on any movie card to save it here!</p>
+    </div>
+  </aside>
+
+  <!-- Write Vibe Review Modal -->
+  <div class="modal-overlay hidden" id="review-modal-overlay">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modal-movie-title">Write Vibe Review</h3>
+        <button class="close-modal-btn" id="btn-close-review-modal">&times;</button>
+      </div>
+      <form id="review-form">
+        <input type="hidden" id="modal-movie-id">
+
+        <div class="form-group">
+          <label>1. Scene Photo / Still URL</label>
+          <input type="url" id="review-image-url" required placeholder="https://images.unsplash.com/photo-..." value="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&q=80">
+        </div>
+
+        <div class="form-group">
+          <label>2. Famous Dialogue / Genuine Thought</label>
+          <textarea id="review-dialogue" rows="3" required placeholder="Type an iconic line or quote from this scene..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>3. Vibe Check Rating (1 to 5 Stars)</label>
+          <div class="star-rating-input">
+            <span class="star-btn" data-value="1">★</span>
+            <span class="star-btn" data-value="2">★</span>
+            <span class="star-btn" data-value="3">★</span>
+            <span class="star-btn" data-value="4">★</span>
+            <span class="star-btn active" data-value="5">★</span>
+          </div>
+          <input type="hidden" id="review-rating-value" value="5">
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancel-review">Cancel</button>
+          <button type="submit" class="btn btn-primary">🚀 Post Polaroid Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
