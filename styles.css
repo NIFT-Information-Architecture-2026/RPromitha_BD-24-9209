@@ -1,4 +1,4 @@
-/* Reset & Variables */
+/* Movie Vibe — Complete Styles matching Notebook Sketches */
 :root {
   --bg-dark: #0A0B10;
   --bg-surface: #141622;
@@ -277,11 +277,11 @@ body {
   margin: 0 auto 4rem;
   padding: 0 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 2rem;
 }
 
-/* Movie Card */
+/* Movie Vibe Card (Matching Sketch Image 2) */
 .movie-card {
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -291,17 +291,37 @@ body {
   flex-direction: column;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .movie-card:hover {
   transform: translateY(-6px);
-  box-shadow: var(--poster-glow);
+  box-shadow: 0 10px 30px rgba(229, 169, 60, 0.25);
   border-color: rgba(229, 169, 60, 0.4);
+}
+
+/* Card Vibe Header Pill (#vibe top right - Sketch Image 2) */
+.card-vibe-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px 4px;
+}
+
+.vibe-hashtag {
+  background: rgba(229, 169, 60, 0.15);
+  border: 1px solid var(--text-gold);
+  color: var(--text-gold);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 15px;
 }
 
 .poster-wrapper {
   position: relative;
   height: 320px;
+  margin: 0 16px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -327,28 +347,6 @@ body {
   padding: 4px 10px;
   border-radius: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.watchlist-toggle-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background: rgba(10, 11, 16, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  backdrop-filter: blur(5px);
-  transition: all 0.2s ease;
-}
-
-.watchlist-toggle-btn.saved {
-  background: var(--accent-neon);
-  border-color: var(--accent-neon);
 }
 
 .movie-info {
@@ -361,16 +359,17 @@ body {
 .movie-title {
   font-family: var(--font-serif);
   font-size: 1.4rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
 }
 
 .movie-meta {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.4rem;
   align-items: center;
   color: var(--text-muted);
   font-size: 0.85rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .meta-pill {
@@ -378,20 +377,145 @@ body {
   padding: 2px 8px;
   border-radius: 6px;
   color: var(--text-main);
+  font-size: 0.8rem;
 }
 
-.ott-section {
+/* Ranking & Votes Line (Sketch Image 2: ★ 5.0 (16k) #4 movie in India) */
+.ranking-line {
+  font-size: 0.9rem;
   margin-bottom: 1rem;
+  color: var(--text-main);
 }
 
-.ott-label {
-  font-size: 0.75rem;
+.ranking-line .stars {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
+
+.ranking-line .votes {
   color: var(--text-muted);
+}
+
+.trending-tag {
+  color: var(--accent-neon);
+  font-weight: 600;
+}
+
+/* Action Buttons Row (Sketch Image 2: [+ Watchlist] [* Vibecheck]) */
+.action-buttons-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.watchlist-toggle-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.6rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.watchlist-toggle-btn:hover {
+  border-color: var(--text-gold);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.watchlist-toggle-btn.saved {
+  background: var(--accent-neon);
+  border-color: var(--accent-neon);
+}
+
+.write-review-btn {
+  background: rgba(255, 51, 102, 0.15);
+  border: 1px solid var(--accent-neon);
+  color: var(--accent-neon);
+  padding: 0.6rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.write-review-btn:hover {
+  background: var(--accent-neon);
+  color: white;
+}
+
+/* Summary Box (Sketch Image 2) */
+.summary-box {
+  background: rgba(10, 11, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-gold);
   text-transform: uppercase;
   margin-bottom: 0.3rem;
-  display: block;
+  letter-spacing: 0.5px;
 }
 
+.summary-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Cast & OTT Footer Row (Sketch Image 2) */
+.cast-ott-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cast-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cast-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.cast-avatars {
+  display: flex;
+  gap: 4px;
+}
+
+.cast-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--text-gold) 0%, #D48806 100%);
+  color: #111;
+  font-size: 0.7rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #111;
+}
+
+/* OTT Badges */
 .ott-badges {
   display: flex;
   gap: 0.4rem;
@@ -407,7 +531,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  cursor: default; /* Visual indicator only */
+  cursor: default;
 }
 
 .ott-badge.netflix { background: var(--ott-netflix); }
@@ -416,61 +540,34 @@ body {
 .ott-badge.hotstar { background: var(--ott-hotstar); }
 .ott-badge.zee5 { background: var(--ott-zee5); }
 
-.rating-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  font-size: 0.9rem;
-}
-
-.stars {
-  color: var(--accent-gold);
-  font-weight: 700;
-}
-
-.write-review-btn {
-  background: rgba(255, 51, 102, 0.1);
-  border: 1px dashed var(--accent-neon);
-  color: var(--accent-neon);
-  padding: 0.6rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1.2rem;
-}
-
-.write-review-btn:hover {
-  background: var(--accent-neon);
-  color: white;
-}
-
-/* Polaroid Reviews Section in Movie Card */
+/* DROPS & REVIEWS Section (Sketch Image 3) */
 .polaroid-stream {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 1rem;
   margin-top: auto;
 }
 
 .stream-heading {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--text-gold);
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 0.8rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
 .polaroid-card {
   background: var(--bg-polaroid);
   color: var(--text-dark);
-  padding: 12px 12px 16px 12px;
-  border-radius: 4px;
+  padding: 12px;
+  border-radius: 6px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
   margin-bottom: 0.8rem;
+}
+
+.polaroid-author {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 6px;
 }
 
 .polaroid-img {
@@ -486,8 +583,26 @@ body {
   font-style: italic;
   font-size: 0.95rem;
   line-height: 1.4;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #1F2937;
+}
+
+.clapper-vibecheck {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.clapper-vibecheck .stars {
+  color: var(--accent-gold);
+}
+
+.review-comment {
+  font-size: 0.8rem;
+  color: #4B5563;
+  margin-bottom: 8px;
+  font-style: italic;
 }
 
 .polaroid-footer {
@@ -495,7 +610,6 @@ body {
   justify-content: space-between;
   align-items: center;
   font-size: 0.75rem;
-  color: #6B7280;
   border-top: 1px solid #E5E7EB;
   padding-top: 6px;
 }
@@ -505,10 +619,15 @@ body {
   border: none;
   cursor: pointer;
   color: #EF4444;
+  font-weight: 700;
+}
+
+.watchlist-small-btn {
+  background: none;
+  border: none;
+  color: #2563EB;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 3px;
+  cursor: pointer;
 }
 
 /* Watchlist Side Drawer */
@@ -667,7 +786,6 @@ body {
   display: none !important;
 }
 
-/* Utilities */
 .empty-state {
   text-align: center;
   color: var(--text-muted);

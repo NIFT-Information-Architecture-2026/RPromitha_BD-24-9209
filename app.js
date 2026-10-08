@@ -1,4 +1,4 @@
-// Movie Vibe — Interactive Application Logic
+// Movie Vibe — Interactive Application Logic (Matching Sketches)
 
 // 9 Vibe Categories
 const VIBES = [
@@ -18,7 +18,7 @@ const VIBES = [
 const LANGUAGES = ["All", "Telugu", "Hindi", "English", "Tamil", "Malayalam", "Korean"];
 const OTTS = ["All", "Netflix", "Prime Video", "Aha", "Hotstar", "Zee5"];
 
-// Mock Movie Database with Polaroid Quote Reviews & OTT Badges
+// Enhanced Movie Database matching exact notebook sketches
 let MOVIES = [
   {
     id: "m1",
@@ -26,18 +26,25 @@ let MOVIES = [
     year: 2023,
     language: ["Telugu", "Hindi"],
     vibe: "comforting",
+    vibeTag: "#Comforting",
+    genres: ["Drama", "Romance"],
+    trendingRank: "#2 Trending in India",
+    votesCount: "18k",
+    summary: "A single father's quiet world is turned upside down when a mysterious, warm-hearted woman enters his daughter's life.",
+    cast: ["Nani", "Mrunal Thakur", "Kiara Khanna"],
     topPick: true,
     poster: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80",
     otts: [{ name: "Netflix", class: "netflix" }, { name: "Aha", class: "aha" }],
-    rating: 4.9,
+    rating: 5.0,
     reviews: [
       {
         id: "r1",
-        author: "@nani_fanatic",
+        author: "@ananya_",
         image: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&q=80",
-        dialogue: "Love isn't about how long you stay together, it's about how deeply you care even in silence.",
+        quote: "Love isn't about how long you stay together, it's about how deeply you care even in silence.",
+        comment: "Whenever I feel a little low, I'd watch this movie. Pure emotional warmth!",
         rating: 5,
-        likes: 184
+        likes: 83
       }
     ]
   },
@@ -47,6 +54,12 @@ let MOVIES = [
     year: 2022,
     language: ["Telugu", "Hindi", "Tamil"],
     vibe: "high-energy",
+    vibeTag: "#HighEnergy",
+    genres: ["Action", "Drama"],
+    trendingRank: "#1 Trending in India",
+    votesCount: "45k",
+    summary: "A fearless warrior and a stealthy officer forge an unbreakable brotherhood during the roaring 1920s.",
+    cast: ["NTR Jr.", "Ram Charan", "Alia Bhatt"],
     topPick: true,
     poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=800&q=80",
     otts: [{ name: "Netflix", class: "netflix" }, { name: "Hotstar", class: "hotstar" }],
@@ -56,7 +69,8 @@ let MOVIES = [
         id: "r2",
         author: "@action_cinephile",
         image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80",
-        dialogue: "Dosti is thicker than blood. The fire and water duo made history!",
+        quote: "Dosti is thicker than blood. Fire and water set the screen ablaze!",
+        comment: "Mind blowing, just watch it for the Naatu Naatu energy!",
         rating: 5,
         likes: 310
       }
@@ -68,6 +82,12 @@ let MOVIES = [
     year: 2009,
     language: ["Hindi"],
     vibe: "hilarious",
+    vibeTag: "#Hilarious",
+    genres: ["Comedy", "Drama"],
+    trendingRank: "#3 Classic in India",
+    votesCount: "60k",
+    summary: "Two friends search for their long-lost college roommate while reminiscing about his unconventional wisdom.",
+    cast: ["Aamir Khan", "R. Madhavan", "Sharman Joshi"],
     topPick: true,
     poster: "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=800&q=80",
     otts: [{ name: "Prime Video", class: "prime" }],
@@ -77,7 +97,8 @@ let MOVIES = [
         id: "r3",
         author: "@rancho_vibes",
         image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=600&q=80",
-        dialogue: "All Izz Well! Pursue excellence, and success will chase you.",
+        quote: "All Izz Well! Pursue excellence, and success will chase you.",
+        comment: "The ultimate stressbuster movie for every student!",
         rating: 5,
         likes: 245
       }
@@ -89,6 +110,12 @@ let MOVIES = [
     year: 2023,
     language: ["Korean", "English"],
     vibe: "love",
+    vibeTag: "#InTheMoodForLove",
+    genres: ["Romance", "Drama"],
+    trendingRank: "#5 Indie Highlight",
+    votesCount: "14k",
+    summary: "Two childhood sweethearts are reunited in New York for one fateful week as they confront destiny.",
+    cast: ["Greta Lee", "Teo Yoo", "John Magaro"],
     topPick: true,
     poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80",
     otts: [{ name: "Prime Video", class: "prime" }],
@@ -98,7 +125,8 @@ let MOVIES = [
         id: "r4",
         author: "@indie_soul",
         image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=600&q=80",
-        dialogue: "If two people leave a connection behind, maybe they meet in another life called In-Yun.",
+        quote: "If two people leave a connection behind, maybe they meet in another life called In-Yun.",
+        comment: "Hauntingly beautiful and poetic.",
         rating: 5,
         likes: 198
       }
@@ -110,6 +138,12 @@ let MOVIES = [
     year: 2024,
     language: ["Malayalam", "Telugu", "Tamil"],
     vibe: "horror-thriller",
+    vibeTag: "#HorrorThriller",
+    genres: ["Survival", "Thriller"],
+    trendingRank: "#4 Trending in India",
+    votesCount: "25k",
+    summary: "A vacation turns into a desperate survival mission when a friend falls into the deadly Guna Caves.",
+    cast: ["Soubin Shahir", "Sreenath Bhasi", "Balu Varghese"],
     topPick: true,
     poster: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80",
     otts: [{ name: "Hotstar", class: "hotstar" }],
@@ -119,7 +153,8 @@ let MOVIES = [
         id: "r5",
         author: "@survival_cinema",
         image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80",
-        dialogue: "Kanmani Anbodu Kadhlan... A song turned into the ultimate brotherly rescue anthem!",
+        quote: "Kanmani Anbodu Kadhlan... A song turned into the ultimate brotherly rescue anthem!",
+        comment: "Edge of your seat thriller from start to finish.",
         rating: 5,
         likes: 412
       }
@@ -131,6 +166,12 @@ let MOVIES = [
     year: 2024,
     language: ["Malayalam", "Telugu"],
     vibe: "weekend",
+    vibeTag: "#WeekendVibe",
+    genres: ["Comedy", "Romance"],
+    trendingRank: "#6 Trending in India",
+    votesCount: "19k",
+    summary: "A carefree young man moves to Hyderabad for a gate course and stumbles into a chaotic love story.",
+    cast: ["Naslen K. Gafoor", "Mamitha Baiju", "Shyam Mohan"],
     topPick: false,
     poster: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=800&q=80",
     otts: [{ name: "Aha", class: "aha" }, { name: "Hotstar", class: "hotstar" }],
@@ -140,7 +181,8 @@ let MOVIES = [
         id: "r6",
         author: "@hyderabad_diaries",
         image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600&q=80",
-        dialogue: "Pure unadulterated chaotic romance set in Hyderabad. Pure weekend joy!",
+        quote: "Pure unadulterated chaotic romance set in Hyderabad!",
+        comment: "Laugh out loud funny with great music.",
         rating: 4.8,
         likes: 156
       }
@@ -148,9 +190,9 @@ let MOVIES = [
   }
 ];
 
-// Application State — Supporting Multi-Select Languages
+// Application State
 let activeVibe = "all";
-let activeLanguages = ["All"]; // Array supporting multiple languages
+let activeLanguages = ["All"];
 let activeOtt = "All";
 let isTopPicksMode = false;
 let watchlist = [];
@@ -200,7 +242,7 @@ function renderVibePills() {
   `).join("");
 }
 
-// Render Language Filter Pills with Multi-Select Indicator
+// Render Language Filter Pills
 function renderLanguagePills() {
   const container = document.getElementById("language-pills-container");
   container.innerHTML = LANGUAGES.map(lang => {
@@ -264,7 +306,6 @@ function setupEventListeners() {
     if (clickedLang === "All") {
       activeLanguages = ["All"];
     } else {
-      // Remove "All" if selecting specific languages
       activeLanguages = activeLanguages.filter(l => l !== "All");
 
       if (activeLanguages.includes(clickedLang)) {
@@ -273,7 +314,6 @@ function setupEventListeners() {
         activeLanguages.push(clickedLang);
       }
 
-      // If no language selected, default back to "All"
       if (activeLanguages.length === 0) {
         activeLanguages = ["All"];
       }
@@ -324,7 +364,7 @@ function enableTopPicksMode() {
   filterAndRenderMovies();
 }
 
-// Filter Movies & Render Cards with Multi-Language Support
+// Filter Movies & Render Cards matching notebook sketches
 function filterAndRenderMovies() {
   let filtered = MOVIES;
 
@@ -334,7 +374,6 @@ function filterAndRenderMovies() {
     if (activeVibe !== "all") {
       filtered = filtered.filter(m => m.vibe === activeVibe);
     }
-    // Multi-Language Filtering Logic
     if (!activeLanguages.includes("All")) {
       filtered = filtered.filter(m => {
         const movieLangs = Array.isArray(m.language) ? m.language : [m.language];
@@ -350,56 +389,93 @@ function filterAndRenderMovies() {
   resultsCount.textContent = `Showing ${filtered.length} movie${filtered.length === 1 ? '' : 's'}${langText}`;
 
   if (filtered.length === 0) {
-    movieGrid.innerHTML = `<div class="empty-state">No movies match your selected vibe & language filters. Try selecting another language or vibe!</div>`;
+    movieGrid.innerHTML = `<div class="empty-state">No movies match your selected vibe & filters. Try choosing another vibe!</div>`;
     return;
   }
 
   movieGrid.innerHTML = filtered.map(movie => {
     const isSaved = watchlist.some(w => w.id === movie.id);
     const langsDisplay = Array.isArray(movie.language) ? movie.language.join(", ") : movie.language;
+    const genresDisplay = movie.genres ? movie.genres.map(g => `<span class="meta-pill">${g}</span>`).join(" ") : "";
+    const castDisplay = movie.cast ? movie.cast.slice(0, 3).map(c => `<span class="cast-avatar" title="${c}">${c.charAt(0)}</span>`).join("") : "";
+
     return `
       <article class="movie-card" data-id="${movie.id}">
+        <!-- Top Vibe Hashtag Pill (Sketch Image 2) -->
+        <div class="card-vibe-header">
+          <span class="vibe-hashtag">${movie.vibeTag || '#Vibe'}</span>
+        </div>
+
         <div class="poster-wrapper">
           <img src="${movie.poster}" alt="${movie.title}" class="poster-img">
           ${movie.topPick ? `<span class="top-pick-badge">★ Top 5 Pick</span>` : ''}
-          <button class="watchlist-toggle-btn ${isSaved ? 'saved' : ''}" onclick="toggleWatchlist('${movie.id}')">
-            ${isSaved ? '✓ Saved' : '+ Watchlist'}
-          </button>
         </div>
 
         <div class="movie-info">
           <h3 class="movie-title">${movie.title}</h3>
+          
+          <!-- Genres Row (Sketch Image 2: [Drama] [Crime]) -->
           <div class="movie-meta">
-            <span>${movie.year}</span> • 
-            <span class="meta-pill">${langsDisplay}</span>
+            ${genresDisplay} • <span class="meta-pill">${langsDisplay}</span> (${movie.year})
           </div>
 
-          <div class="ott-section">
-            <span class="ott-label">Available On</span>
+          <!-- Rating & Ranking Line (Sketch Image 2: ★ 5.0 (18k) #2 Trending in India) -->
+          <div class="ranking-line">
+            <span class="stars">★ ${movie.rating}</span> <span class="votes">(${movie.votesCount})</span> • <span class="trending-tag">${movie.trendingRank}</span>
+          </div>
+
+          <!-- Action Buttons Row (Sketch Image 2: [+ Watchlist] [* Vibecheck]) -->
+          <div class="action-buttons-row">
+            <button class="watchlist-toggle-btn ${isSaved ? 'saved' : ''}" onclick="toggleWatchlist('${movie.id}')">
+              ${isSaved ? '✓ Saved' : '+ Watchlist'}
+            </button>
+            <button class="write-review-btn" onclick="openReviewModal('${movie.id}')">
+              ★ Vibecheck
+            </button>
+          </div>
+
+          <!-- Summary Snippet (Sketch Image 2) -->
+          <div class="summary-box">
+            <div class="summary-label">Summary</div>
+            <p class="summary-text">${movie.summary}</p>
+          </div>
+
+          <!-- Cast & OTT Row (Sketch Image 2) -->
+          <div class="cast-ott-row">
+            <div class="cast-group">
+              <span class="cast-label">Cast:</span>
+              <div class="cast-avatars">${castDisplay}</div>
+            </div>
             <div class="ott-badges">
               ${movie.otts.map(o => `<span class="ott-badge ${o.class}">▶ ${o.name}</span>`).join('')}
             </div>
           </div>
 
-          <div class="rating-row">
-            <span class="stars">★ ${movie.rating} / 5</span>
-            <span style="color: var(--text-muted); font-size: 0.8rem;">${movie.reviews.length} Polaroid Reviews</span>
-          </div>
-
-          <button class="write-review-btn" onclick="openReviewModal('${movie.id}')">
-            ✍️ Write Vibe Review
-          </button>
-
+          <!-- Drops & Reviews (Sketch Image 3) -->
           <div class="polaroid-stream">
-            <div class="stream-heading">Community Scene Reviews</div>
+            <div class="stream-heading">DROPS & REVIEWS</div>
             ${movie.reviews.map(rev => `
               <div class="polaroid-card">
-                <img src="${rev.image}" class="polaroid-img" alt="Scene Still">
-                <blockquote class="polaroid-quote">"${rev.dialogue}"</blockquote>
+                <div class="polaroid-author">${rev.author}</div>
+                <img src="${rev.image}" class="polaroid-img" alt="Cinematic Still">
+                <blockquote class="polaroid-quote">"${rev.quote}"</blockquote>
+                
+                <!-- Clapperboard Vibecheck Line (Sketch Image 3: 🎬 Vibecheck ★★★★★) -->
+                <div class="clapper-vibecheck">
+                  🎬 Vibecheck <span class="stars">${'★'.repeat(rev.rating)}</span>
+                </div>
+
+                <!-- Personal Comment Line (Sketch Image 3: 💬 "Whenever I feel a little low...") -->
+                <div class="review-comment">
+                  💬 ${rev.comment}
+                </div>
+
                 <div class="polaroid-footer">
-                  <span>${rev.author} • ★ ${rev.rating}/5</span>
                   <button class="like-btn" onclick="likeReview('${movie.id}', '${rev.id}')">
-                    ❤️ <span>${rev.likes}</span>
+                    ❤️ ${rev.likes} Likes
+                  </button>
+                  <button class="watchlist-small-btn" onclick="toggleWatchlist('${movie.id}')">
+                    + Add to watchlist
                   </button>
                 </div>
               </div>
@@ -484,7 +560,8 @@ function handleReviewSubmission(e) {
       id: "r_" + Date.now(),
       author: "@creative_director",
       image: imageUrl,
-      dialogue: dialogue,
+      quote: dialogue,
+      comment: "A genuine scene pick by Creative Director.",
       rating: rating,
       likes: 1
     });

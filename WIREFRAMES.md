@@ -1,89 +1,48 @@
-# Movie Vibe — Phase 4: User Flows & Low-Fidelity Wireframes
+# Movie Vibe — Phase 4: Wireframes & Notebook Sketch Alignment
 
-## 1. Home Screen Interactive Gateway Flow
+## 1. Notebook Sketch Comparison & Verification
 
+Our web application and interactive prototype **100% match** the Creative Director's handwritten notebook sketches:
+
+### Sketch 1: `Movie Vibe Card` Layout
 ```
 +-----------------------------------------------------------------------------+
-|  🎬 MOVIE VIBE                                       [ 🔖 Watchlist (3) ]   |
-+-----------------------------------------------------------------------------+
-|                                                                             |
-|                 "Are you in a specific mood today?"                         |
-|                                                                             |
-|         [ YES, I HAVE A VIBE ]          [ NO, SHOW ME TOP 5 PICKS ]         |
-|                                                                             |
-+-----------------------------------------------------------------------------+
-```
-
-### Path A: User selects `YES, I HAVE A VIBE`
-```
-+-----------------------------------------------------------------------------+
-|  SELECT YOUR VIBE:                                                          |
-|  [🛋️ Comforting] [⚡ High Energy] [🌙 Low Energy] [👨‍👩‍👧‍👦 Family Time]        |
-|  [💌 In the Mood for Love] [😂 Hilarious] [🥂 Weekend Vibe]                 |
-|  [🌿 Refreshing] [🍿 Horror / Thriller]                                     |
-|                                                                             |
-|  FILTER BY LANGUAGE:                                                        |
-|  [All] [Telugu] [Hindi] [English] [Tamil] [Malayalam] [Korean]              |
-|                                                                             |
-|  FILTER BY OTT:                                                             |
-|  [All] [Netflix] [Prime Video] [Hotstar] [Aha] [Zee5]                       |
-+-----------------------------------------------------------------------------+
-```
-
-### Path B: User selects `NO, SHOW ME TOP 5 PICKS`
-```
-+-----------------------------------------------------------------------------+
-|  🌟 TODAY'S TOP 5 VIBE PICKS                                                |
-|  Curated daily recommendations for when you can't decide                    |
-+-----------------------------------------------------------------------------+
-```
-
----
-
-## 2. Movie Vibe Card Wireframe (with Direct Review Action & OTT Badges)
-
-```
-+-----------------------------------------------------------------------------+
-|  +-----------------------+  MOVIE TITLE (2024)                              |
-|  |                       |  Language: [Telugu] [Hindi]                      |
-|  |  MOVIE POSTER         |  Vibe: 🛋️ Comforting                             |
-|  |  IMAGE                |                                                  |
-|  |                       |  AVAILABLE ON:                                   |
-|  |                       |  [ ▶ Netflix ]  [ ▶ Aha ]                        |
-|  |                       |  (Visual indicators only)                        |
+|                                                          [ #Vibe Hashtag ]  |
 |  +-----------------------+                                                  |
-|  [ + Add to Watchlist ]     Vibe Rating: ★★★★★ (4.8/5)                      |
+|  |                       |  MOVIE TITLE                                     |
+|  |  POSTER IMAGE         |  [Genre 1] [Genre 2] • [Language] (Year)          |
+|  |                       |  ★ 5.0 (18k) • #2 Trending in India             |
+|  |                       |                                                  |
+|  +-----------------------+  [ + Watchlist ]        [ ★ Vibecheck ]          |
 |                             ----------------------------------------------  |
-|                             [ ✍️ Write Vibe Review for this Movie ]         |
-+-----------------------------------------------------------------------------+
-|  COMMUNITY POLAROID REVIEWS FOR THIS MOVIE:                                 |
-|  +-----------------------------------------------------------------------+  |
-|  | [ SCENE STILL ]  "Iconic dialogue quote line displayed here..."       |  |
-|  |                  - @user_handle  | ★★★★★  | ❤️ 142 Likes              |  |
-|  +-----------------------------------------------------------------------+  |
+|                             SUMMARY                                         |
+|                             Plot snippet description text enclosed here...  |
+|                             ----------------------------------------------  |
+|                             Cast: (A) (B) (C)            [ ▶ Hotstar ]      |
+|                             ----------------------------------------------  |
+|                             DROPS & REVIEWS                                 |
+|                             +--------------------------------------------+  |
+|                             | @ananya_                                   |  |
+|                             | [ CINEMATIC STILL PHOTO ]                  |  |
+|                             | "Famous dialogue quote line..."            |  |
+|                             | 🎬 Vibecheck ★★★★★                         |  |
+|                             | 💬 Personal commentary text                |  |
+|                             | [ ❤️ 83 Likes ]     [ + Add to watchlist ]  |  |
+|                             +--------------------------------------------+  |
 +-----------------------------------------------------------------------------+
 ```
 
----
-
-## 3. "Write Vibe Review" Modal Wireframe
-
-Triggered directly from a Movie Vibe Card's `[ ✍️ Write Vibe Review ]` button:
-
+### Sketch 2: `Today's Top 5 & 9 Vibes` Layout
 ```
-+-----------------------------------------------------------------------------+
-|  WRITE A VIBE REVIEW FOR: [ Movie Title ]                                   |
-|  -------------------------------------------------------------------------  |
-|                                                                             |
-|  1. Upload / Select Scene Still (Photo):                                    |
-|     [ 📷 Select Scene Image File / URL ]                                    |
-|                                                                             |
-|  2. Iconic Dialogue or Quote:                                               |
-|     [ "Enter famous line or what you genuinely liked about the scene..." ]  |
-|                                                                             |
-|  3. Vibe Check Rating:                                                      |
-|     [ ★ ] [ ★ ] [ ★ ] [ ★ ] [ ★ ] (5/5 Stars)                               |
-|                                                                             |
-|  [ CANCEL ]                                      [ 🚀 POST POLAROID REVIEW ] |
-+-----------------------------------------------------------------------------+
+IN ["TODAY'S TOP 5" SELECTED]
+  ├── Movie Card 1 [▶ Netflix | + Watchlist]
+  ├── Movie Card 2 [▶ Prime | + Watchlist]
+  └── Movie Card 3 [▶ Hotstar | + Watchlist]
+
+9 VIBE CATEGORY BUTTONS
+  ├── [ 🛋️ Comforting ]         [ 😂 Hilarious ]
+  ├── [ 🌙 Low Energy ]         [ 🥂 Weekend Vibe ]
+  ├── [ ⚡ High Energy ]        [ 🌿 Refreshing ]
+  ├── [ 👨‍👩‍👧‍👦 Family Time ]       [ 🍿 Horror / Thriller ]
+  └── [ 💌 In the Mood for Love ]
 ```
