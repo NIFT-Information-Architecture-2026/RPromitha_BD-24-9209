@@ -13,14 +13,25 @@ This document consolidates all creative choices, structural decisions, UX framew
 
 ## 2. Core Vision & Product Identity
 - **App Name**: **Movie Vibe**
-- **Core Concept**: Emotion-first movie discovery platform where users choose movies by current mood/vibe, filter by multi-selected languages & OTT availability, read/post polaroid reviews with famous dialogues, and curate watchlists.
-- **Visual Aesthetic**: All-genre coverage wrapped in a **Cinematic Dark Mode** with glowing poster cards and **Polaroid Film-Strip Community Reviews**.
+- **Core Concept**: Emotion-first movie discovery platform where users choose movies by current mood/vibe, filter by multi-selected languages & OTT availability, listen to ambient soundscapes, read/post polaroid reviews with famous dialogues, and curate watchlists.
+- **Visual & Audio Aesthetic**: Cinematic Dark Mode with glowing poster cards, Polaroid Film-Strip Reviews, and **9 Vibe Ambient Soundscapes**.
 
 ---
 
-## 3. Verified Notebook Sketch Features (100% Match)
+## 3. Approved 9 Vibe Soundscapes & Features
 
-### 3.1 Movie Vibe Card Structure (Notebook Sketch 1)
+### 3.1 Ambient Soundscapes for 9 Vibes
+1. 😂 **Hilarious**: Upbeat brass horns 🎺
+2. 🛋️ **Comforting**: Warm felt piano 🎹
+3. 👨‍👩‍👧‍👦 **Family Time**: Guitar strumming 🎸
+4. ⚡ **High Energy**: Drum beats 🥁
+5. 🌙 **Low Energy**: Ocean tides + soft piano 🌊🎹
+6. 🍿 **Horror / Thriller**: Howling night wind + heartbeat percussion 🌬️💓
+7. 💌 **In the Mood for Love**: Light rain on roof 🌧️
+8. 🌿 **Refreshing**: Forest breeze & birds chirping 🌲🐦
+9. 🥂 **Weekend Vibe**: Clean electric guitar 🎸⚡
+
+### 3.2 Movie Vibe Card Structure (Notebook Sketch 1)
 - `#vibe` hashtag pill placed at the top right of the card (`#Comforting`, `#HighEnergy`).
 - Centered Poster image with Top 5 Pick badge.
 - Genre pills (`[Drama] [Crime]`).
@@ -29,7 +40,7 @@ This document consolidates all creative choices, structural decisions, UX framew
 - Enclosed **Summary** box with plot description text.
 - **Cast** avatars (`Cast: (A) (B) (C)`) and OTT streaming badge (`[▶ Hotstar]`).
 
-### 3.2 Drops & Reviews Polaroid Card (Notebook Sketch 2)
+### 3.3 Drops & Reviews Polaroid Card (Notebook Sketch 2)
 - Author handle (`@ananya_`).
 - Cinematic scene still photo.
 - Famous dialogue quote in quotation marks (`"Mind blowing, just watch it."`).
@@ -37,11 +48,10 @@ This document consolidates all creative choices, structural decisions, UX framew
 - Personal thought / commentary line (`💬 "Whenever I feel a little low, I'd watch this movie."`).
 - Action footer (`[ ❤️ 83 Likes ]` `[ + Add to watchlist ]`).
 
-### 3.3 Today's Top 5 & 9 Vibes Layout (Notebook Sketch 3)
-- Gateway entry choice: `YES, I HAVE A VIBE` vs `NO, SHOW TOP 5`.
-- **9 Core Vibe Buttons**: *Comforting, Hilarious, Low Energy, Weekend Vibe, High Energy, Refreshing, Family Time, Horror / Thriller, In the Mood for Love*.
-- Multi-Select Language Filter pills.
-- Watchlist Slide-Out Side Panel.
+### 3.4 Navigation & Filters
+- **Gateway Entry**: Choice between `YES, I HAVE A VIBE` vs `NO, SHOW TOP 5`.
+- **Multi-Select Language Filtering**: Toggle multiple languages simultaneously.
+- **Watchlist Slide-Out Side Panel**: Right-hand drawer panel.
 
 ---
 
@@ -51,7 +61,7 @@ This document consolidates all creative choices, structural decisions, UX framew
 - **[new.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/new.md)** — Master record in project repository.
 - **[Instructions.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/Instructions.md)** — Role & Collaboration Contract.
 - **[NARRATIVE_OBJECTIVES.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/NARRATIVE_OBJECTIVES.md)** — Phase 1 Narrative & Positioning.
-- **[UX_RESEARCH.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/UX_RESEARCH.md)** — Phase 2 UX Personas & Vibe Taxonomy.
+- **[UX_RESEARCH.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/UX_RESEARCH.md)** — Phase 2 UX Personas, Vibe Taxonomy & Soundscapes.
 - **[IA_SPEC.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/IA_SPEC.md)** — Phase 3 Information Architecture & Schemas.
 - **[WIREFRAMES.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/WIREFRAMES.md)** — Phase 4 Layout Wireframes & Notebook Sketches.
 - **[DESIGN_SYSTEM.md](file:///Users/harshitha/Documents/RPromitha_BD-24-9209/DESIGN_SYSTEM.md)** — Phase 5 Design System & Color Tokens.

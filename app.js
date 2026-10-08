@@ -1,17 +1,17 @@
-// Movie Vibe — Interactive Application Logic (Matching Sketches)
+// Movie Vibe — Interactive Application Logic with Ambient Soundscapes
 
-// 9 Vibe Categories
+// 9 Vibe Categories with Soundscape Descriptions
 const VIBES = [
-  { id: "all", name: "All Vibes", icon: "🌈" },
-  { id: "comforting", name: "Comforting", icon: "🛋️" },
-  { id: "high-energy", name: "High Energy", icon: "⚡" },
-  { id: "low-energy", name: "Low Energy", icon: "🌙" },
-  { id: "family-time", name: "Family Time", icon: "👨‍👩‍👧‍👦" },
-  { id: "love", name: "In the Mood for Love", icon: "💌" },
-  { id: "hilarious", name: "Hilarious", icon: "😂" },
-  { id: "weekend", name: "Weekend Vibe", icon: "🥂" },
-  { id: "refreshing", name: "Refreshing", icon: "🌿" },
-  { id: "horror-thriller", name: "Horror / Thriller", icon: "🍿" }
+  { id: "all", name: "All Vibes", icon: "🌈", soundscape: "Ambient Cinema Mix" },
+  { id: "comforting", name: "Comforting", icon: "🛋️", soundscape: "Warm Felt Piano" },
+  { id: "high-energy", name: "High Energy", icon: "⚡", soundscape: "Driving Drum Beats" },
+  { id: "low-energy", name: "Low Energy", icon: "🌙", soundscape: "Ocean Tides + Soft Piano" },
+  { id: "family-time", name: "Family Time", icon: "👨‍👩‍👧‍👦", soundscape: "Acoustic Guitar Strumming" },
+  { id: "love", name: "In the Mood for Love", icon: "💌", soundscape: "Light Rain on Roof" },
+  { id: "hilarious", name: "Hilarious", icon: "😂", soundscape: "Upbeat Brass Horns" },
+  { id: "weekend", name: "Weekend Vibe", icon: "🥂", soundscape: "Clean Electric Guitar" },
+  { id: "refreshing", name: "Refreshing", icon: "🌿", soundscape: "Forest Breeze & Birds Chirping" },
+  { id: "horror-thriller", name: "Horror / Thriller", icon: "🍿", soundscape: "Howling Night Wind + Heartbeat Percussion" }
 ];
 
 // Languages & OTT Platforms
@@ -196,6 +196,12 @@ let activeLanguages = ["All"];
 let activeOtt = "All";
 let isTopPicksMode = false;
 let watchlist = [];
+let soundscapeEnabled = false;
+
+// Audio Synthesizer Context
+let audioCtx = null;
+let activeSynthNode = null;
+let soundscapeInterval = null;
 
 // DOM Element References
 const gatewayHero = document.getElementById("gateway-hero");
@@ -209,6 +215,12 @@ const btnYesVibe = document.getElementById("btn-yes-vibe");
 const btnNoMood = document.getElementById("btn-no-mood");
 const btnTopPicksNav = document.getElementById("btn-top-picks-nav");
 const brandHome = document.getElementById("brand-home");
+
+const btnSoundscapeToggle = document.getElementById("btn-soundscape-toggle");
+const soundscapeIcon = document.getElementById("soundscape-icon");
+const soundscapeStatus = document.getElementById("soundscape-status");
+const soundscapeIndicatorBar = document.getElementById("soundscape-indicator-bar");
+const activeSoundscapeTag = document.getElementById("active-soundscape-tag");
 
 const watchlistDrawer = document.getElementById("watchlist-drawer");
 const drawerOverlay = document.getElementById("drawer-overlay");
@@ -276,6 +288,7 @@ function setupEventListeners() {
     movieGrid.classList.remove("hidden");
     activeViewTitle.textContent = "Browse by Your Vibe";
     filterAndRenderMovies();
+    updateSoundscapeInfo();
   });
 
   btnNoMood.addEventListener("click", enableTopPicksMode);
@@ -288,6 +301,20 @@ function setupEventListeners() {
     movieGrid.classList.add("hidden");
   });
 
+  // Soundscape Toggle
+  btnSoundscapeToggle.addEventListener("click", () => {
+    soundscapeEnabled = !soundscapeEnabled;
+    soundscapeStatus.textContent = soundscapeEnabled ? "ON" : "OFF";
+    soundscapeIcon.textContent = soundscapeEnabled ? "🔊" : "🔇";
+    btnSoundscapeToggle.classList.toggle("active", soundscapeEnabled);
+
+    if (soundscapeEnabled) {
+      startAmbientSynth();
+    } else {
+      stopAmbientSynth();
+    }
+  });
+
   // Vibe Pill Clicks
   document.getElementById("vibe-pills-container").addEventListener("click", (e) => {
     const pill = e.target.closest(".vibe-pill");
@@ -295,6 +322,10 @@ function setupEventListeners() {
     activeVibe = pill.dataset.id;
     renderVibePills();
     filterAndRenderMovies();
+    updateSoundscapeInfo();
+    if (soundscapeEnabled) {
+      startAmbientSynth();
+    }
   });
 
   // Multi-Select Language Pill Clicks
@@ -352,6 +383,11 @@ function setupEventListeners() {
       });
     });
   });
+}
+
+function updateSoundscapeInfo() {
+  const vibeObj = VIBES.find(v => v.id === activeVibe) || VIBES[0];
+  activeSoundscapeTag.textContent = `🎵 Active Soundscape: ${vibeObj.name} — ${vibeObj.soundscape}`;
 }
 
 function enableTopPicksMode() {
@@ -552,6 +588,7 @@ function handleReviewSubmission(e) {
   const movieId = modalMovieId.value;
   const imageUrl = document.getElementById("review-image-url").value;
   const dialogue = document.getElementById("review-dialogue").value;
+  const comment = document.getElementById("review-comment").value || "A genuine scene pick by Creative Director.";
   const rating = parseInt(document.getElementById("review-rating-value").value);
 
   const movie = MOVIES.find(m => m.id === movieId);
@@ -561,7 +598,7 @@ function handleReviewSubmission(e) {
       author: "@creative_director",
       image: imageUrl,
       quote: dialogue,
-      comment: "A genuine scene pick by Creative Director.",
+      comment: comment,
       rating: rating,
       likes: 1
     });
@@ -582,3 +619,195 @@ window.likeReview = function(movieId, reviewId) {
     }
   }
 };
+
+// --- Web Audio API Ambient Soundscape Synthesizer ---
+function startAmbientSynth() {
+  stopAmbientSynth();
+
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    const masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.15; // Soft ambient volume
+    masterGain.connect(audioCtx.destination);
+    activeSynthNode = masterGain;
+
+    // Synthesize ambient tones matching the 9 vibes:
+    if (activeVibe === "comforting") {
+      // Warm Felt Piano Chords
+      playPianoChords(audioCtx, masterGain, [261.63, 329.63, 392.00]); // C major chord
+    } else if (activeVibe === "hilarious") {
+      // Upbeat Brass Horns
+      playBrassHorns(audioCtx, masterGain, [349.23, 440.00, 523.25]); // F major horn swell
+    } else if (activeVibe === "family-time") {
+      // Guitar Strumming
+      playGuitarStrum(audioCtx, masterGain, [196.00, 246.94, 293.66, 392.00]); // G chord strum
+    } else if (activeVibe === "high-energy") {
+      // Driving Drum Beats
+      playDrumBeats(audioCtx, masterGain);
+    } else if (activeVibe === "low-energy") {
+      // Ocean Tides + Soft Piano
+      playOceanTides(audioCtx, masterGain);
+      playPianoChords(audioCtx, masterGain, [220.00, 261.63, 329.63]); // A minor piano
+    } else if (activeVibe === "horror-thriller") {
+      // Howling Wind + Heartbeat
+      playNightWind(audioCtx, masterGain);
+      playHeartbeat(audioCtx, masterGain);
+    } else if (activeVibe === "love") {
+      // Light Rain on Roof
+      playLightRain(audioCtx, masterGain);
+    } else if (activeVibe === "refreshing") {
+      // Forest Breeze & Birds Chirping
+      playForestBreeze(audioCtx, masterGain);
+    } else if (activeVibe === "weekend") {
+      // Clean Electric Guitar
+      playCleanElectricGuitar(audioCtx, masterGain, [293.66, 369.99, 440.00]); // D maj7 chord
+    } else {
+      // Default Ambient Cinema Mix
+      playOceanTides(audioCtx, masterGain);
+    }
+  } catch (err) {
+    console.log("Audio Context Synth:", err);
+  }
+}
+
+function stopAmbientSynth() {
+  if (soundscapeInterval) {
+    clearInterval(soundscapeInterval);
+    soundscapeInterval = null;
+  }
+  if (activeSynthNode) {
+    try {
+      activeSynthNode.disconnect();
+    } catch(e) {}
+    activeSynthNode = null;
+  }
+}
+
+// Helper Audio Synth Generators
+function playPianoChords(ctx, output, freqs) {
+  freqs.forEach((f, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = f;
+    gain.gain.setValueAtTime(0.05, ctx.currentTime);
+    osc.connect(gain);
+    gain.connect(output);
+    osc.start();
+  });
+}
+
+function playBrassHorns(ctx, output, freqs) {
+  freqs.forEach(f => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.value = f;
+    gain.gain.setValueAtTime(0.04, ctx.currentTime);
+    osc.connect(gain);
+    gain.connect(output);
+    osc.start();
+  });
+}
+
+function playGuitarStrum(ctx, output, freqs) {
+  freqs.forEach((f, idx) => {
+    setTimeout(() => {
+      if (!soundscapeEnabled) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = "triangle";
+      osc.frequency.value = f;
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+      osc.connect(gain);
+      gain.connect(output);
+      osc.start();
+      osc.stop(ctx.currentTime + 1.3);
+    }, idx * 120);
+  });
+}
+
+function playDrumBeats(ctx, output) {
+  soundscapeInterval = setInterval(() => {
+    if (!soundscapeEnabled) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.setValueAtTime(120, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
+    osc.connect(gain);
+    gain.connect(output);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.16);
+  }, 500);
+}
+
+function playOceanTides(ctx, output) {
+  const bufferSize = ctx.sampleRate * 2;
+  const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+  const data = buffer.getChannelData(0);
+  for (let i = 0; i < bufferSize; i++) {
+    data[i] = Math.random() * 2 - 1;
+  }
+  const noise = ctx.createBufferSource();
+  noise.buffer = buffer;
+  noise.loop = true;
+
+  const filter = ctx.createBiquadFilter();
+  filter.type = "lowpass";
+  filter.frequency.value = 400;
+
+  noise.connect(filter);
+  filter.connect(output);
+  noise.start();
+}
+
+function playNightWind(ctx, output) {
+  playOceanTides(ctx, output);
+}
+
+function playHeartbeat(ctx, output) {
+  soundscapeInterval = setInterval(() => {
+    if (!soundscapeEnabled) return;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.setValueAtTime(60, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(10, ctx.currentTime + 0.2);
+    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+    osc.connect(gain);
+    gain.connect(output);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.22);
+  }, 1000);
+}
+
+function playLightRain(ctx, output) {
+  playOceanTides(ctx, output);
+}
+
+function playForestBreeze(ctx, output) {
+  playOceanTides(ctx, output);
+}
+
+function playCleanElectricGuitar(ctx, output, freqs) {
+  freqs.forEach(f => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = "triangle";
+    osc.frequency.value = f;
+    gain.gain.setValueAtTime(0.05, ctx.currentTime);
+    osc.connect(gain);
+    gain.connect(output);
+    osc.start();
+  });
+}

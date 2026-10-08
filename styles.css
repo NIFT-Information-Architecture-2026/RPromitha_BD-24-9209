@@ -1,4 +1,4 @@
-/* Movie Vibe — Complete Styles matching Notebook Sketches */
+/* Movie Vibe — Complete Styles with Ambient Soundscape Bar */
 :root {
   --bg-dark: #0A0B10;
   --bg-surface: #141622;
@@ -79,10 +79,10 @@ body {
 
 .nav-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
-.top-picks-btn, .watchlist-btn {
+.soundscape-btn, .top-picks-btn, .watchlist-btn {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-main);
@@ -96,7 +96,14 @@ body {
   gap: 0.4rem;
 }
 
-.top-picks-btn:hover, .watchlist-btn:hover {
+.soundscape-btn.active {
+  background: rgba(229, 169, 60, 0.2);
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+  box-shadow: 0 0 15px rgba(229, 169, 60, 0.3);
+}
+
+.soundscape-btn:hover, .top-picks-btn:hover, .watchlist-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: var(--text-gold);
 }
@@ -185,6 +192,24 @@ body {
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.18);
   border-color: var(--text-gold);
+}
+
+/* Soundscape Indicator Bar */
+.soundscape-indicator-bar {
+  background: rgba(229, 169, 60, 0.1);
+  border: 1px dashed rgba(229, 169, 60, 0.4);
+  border-radius: 30px;
+  padding: 8px 16px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.soundscape-tag {
+  color: var(--text-gold);
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 
 /* Filters Section */
@@ -281,7 +306,7 @@ body {
   gap: 2rem;
 }
 
-/* Movie Vibe Card (Matching Sketch Image 2) */
+/* Movie Vibe Card */
 .movie-card {
   background: var(--bg-card);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -300,7 +325,6 @@ body {
   border-color: rgba(229, 169, 60, 0.4);
 }
 
-/* Card Vibe Header Pill (#vibe top right - Sketch Image 2) */
 .card-vibe-header {
   display: flex;
   justify-content: flex-end;
@@ -380,7 +404,6 @@ body {
   font-size: 0.8rem;
 }
 
-/* Ranking & Votes Line (Sketch Image 2: ★ 5.0 (16k) #4 movie in India) */
 .ranking-line {
   font-size: 0.9rem;
   margin-bottom: 1rem;
@@ -401,7 +424,6 @@ body {
   font-weight: 600;
 }
 
-/* Action Buttons Row (Sketch Image 2: [+ Watchlist] [* Vibecheck]) */
 .action-buttons-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -450,7 +472,6 @@ body {
   color: white;
 }
 
-/* Summary Box (Sketch Image 2) */
 .summary-box {
   background: rgba(10, 11, 16, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -474,7 +495,6 @@ body {
   line-height: 1.4;
 }
 
-/* Cast & OTT Footer Row (Sketch Image 2) */
 .cast-ott-row {
   display: flex;
   justify-content: space-between;
@@ -515,7 +535,6 @@ body {
   border: 1px solid #111;
 }
 
-/* OTT Badges */
 .ott-badges {
   display: flex;
   gap: 0.4rem;
@@ -540,7 +559,6 @@ body {
 .ott-badge.hotstar { background: var(--ott-hotstar); }
 .ott-badge.zee5 { background: var(--ott-zee5); }
 
-/* DROPS & REVIEWS Section (Sketch Image 3) */
 .polaroid-stream {
   margin-top: auto;
 }

@@ -20,6 +20,11 @@
         <span class="brand-title">MOVIE VIBE</span>
       </div>
       <div class="nav-actions">
+        <!-- Ambient Soundscape Control Toggle -->
+        <button class="soundscape-btn" id="btn-soundscape-toggle">
+          <span id="soundscape-icon">🔇</span> Ambient Sound: <span id="soundscape-status">OFF</span>
+        </button>
+
         <button class="top-picks-btn" id="btn-top-picks-nav">🌟 Today's Top 5</button>
         <button class="watchlist-btn" id="btn-open-watchlist">
           🔖 Watchlist <span class="badge" id="watchlist-count">0</span>
@@ -34,9 +39,9 @@
     <!-- Hero Gateway Section -->
     <section class="gateway-hero" id="gateway-hero">
       <div class="hero-card">
-        <span class="hero-tag">FILM CURATION BY MOOD</span>
+        <span class="hero-tag">FILM CURATION BY MOOD & SOUNDSCAPES</span>
         <h1 class="hero-title">Are you in a specific mood today?</h1>
-        <p class="hero-subtitle">Tell us how you're feeling, or let us curate your night with today's unmissable cinema.</p>
+        <p class="hero-subtitle">Tell us how you're feeling to unlock movie recommendations & immersive ambient soundscapes, or let us curate today's top picks.</p>
 
         <div class="hero-buttons">
           <button class="btn btn-primary" id="btn-yes-vibe">✨ Yes, I have a vibe</button>
@@ -47,6 +52,11 @@
 
     <!-- Filters Section (Hidden initially) -->
     <section class="filters-section hidden" id="filters-section">
+      <!-- Ambient Soundscape Indicator Bar -->
+      <div class="soundscape-indicator-bar" id="soundscape-indicator-bar">
+        <span class="soundscape-tag" id="active-soundscape-tag">🎵 Soundscape: Select a Vibe to listen</span>
+      </div>
+
       <div class="filter-group">
         <h3 class="filter-heading">1. Choose Your Vibe</h3>
         <div class="vibe-pills" id="vibe-pills-container">
@@ -56,7 +66,7 @@
 
       <div class="filter-row">
         <div class="filter-group">
-          <h4 class="filter-subheading">Language</h4>
+          <h4 class="filter-subheading">Language (Multi-Select)</h4>
           <div class="pill-group" id="language-pills-container">
             <!-- Dynamically Rendered Languages -->
           </div>
@@ -112,12 +122,17 @@
         </div>
 
         <div class="form-group">
-          <label>2. Famous Dialogue / Genuine Thought</label>
-          <textarea id="review-dialogue" rows="3" required placeholder="Type an iconic line or quote from this scene..."></textarea>
+          <label>2. Famous Dialogue / Quote</label>
+          <textarea id="review-dialogue" rows="2" required placeholder='e.g. "Love isn't about how long you stay..."'></textarea>
         </div>
 
         <div class="form-group">
-          <label>3. Vibe Check Rating (1 to 5 Stars)</label>
+          <label>3. Personal Thought / Commentary</label>
+          <textarea id="review-comment" rows="2" required placeholder="e.g. Whenever I feel a little low, I'd watch this movie..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>4. Vibe Check Rating (1 to 5 Stars)</label>
           <div class="star-rating-input">
             <span class="star-btn" data-value="1">★</span>
             <span class="star-btn" data-value="2">★</span>
