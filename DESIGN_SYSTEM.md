@@ -30,6 +30,11 @@ The visual identity uses a **Cinematic Dark Mode** featuring deep midnight backd
 }
 ```
 
+### 1.1 Cinematic Background Layers & Textures
+1. **Main Menu / Hero Card Backdrop**: `assets/backgrounds/hero_reel_burgundy.png` mixed with deep burgundy gradients and warm golden spotlight rays.
+2. **Backside of Vibe Selection Card**: `assets/backgrounds/vibe_glow_curtain.jpg` (theatrical projection curtain glow).
+3. **Vibe Pills Substrate & Ambient Body Overlay**: `assets/backgrounds/film_strip_glow.png` (coiled sparkling 35mm film strips).
+
 ---
 
 ## 2. Typography Hierarchy

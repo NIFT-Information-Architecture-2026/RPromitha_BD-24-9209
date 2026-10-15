@@ -52,30 +52,32 @@
 
     <!-- Filters Section (Hidden initially) -->
     <section class="filters-section hidden" id="filters-section">
-      <!-- Ambient Soundscape Indicator Bar -->
-      <div class="soundscape-indicator-bar" id="soundscape-indicator-bar">
-        <span class="soundscape-tag" id="active-soundscape-tag">🎵 Soundscape: Select a Vibe to listen</span>
-      </div>
-
-      <div class="filter-group">
-        <h3 class="filter-heading">1. Choose Your Vibe</h3>
-        <div class="vibe-pills" id="vibe-pills-container">
-          <!-- Dynamically Rendered Vibes -->
+      <div class="vibe-selection-card">
+        <!-- Ambient Soundscape Indicator Bar -->
+        <div class="soundscape-indicator-bar" id="soundscape-indicator-bar">
+          <span class="soundscape-tag" id="active-soundscape-tag">🎵 Soundscape: Select a Vibe to listen</span>
         </div>
-      </div>
 
-      <div class="filter-row">
-        <div class="filter-group">
-          <h4 class="filter-subheading">Language (Multi-Select)</h4>
-          <div class="pill-group" id="language-pills-container">
-            <!-- Dynamically Rendered Languages -->
+        <div class="filter-group vibe-filter-group">
+          <h3 class="filter-heading">1. Choose Your Vibe</h3>
+          <div class="vibe-pills" id="vibe-pills-container">
+            <!-- Dynamically Rendered Vibes -->
           </div>
         </div>
 
-        <div class="filter-group">
-          <h4 class="filter-subheading">OTT Platform</h4>
-          <div class="pill-group" id="ott-pills-container">
-            <!-- Dynamically Rendered OTTs -->
+        <div class="filter-row">
+          <div class="filter-group">
+            <h4 class="filter-subheading">Language (Multi-Select)</h4>
+            <div class="pill-group" id="language-pills-container">
+              <!-- Dynamically Rendered Languages -->
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4 class="filter-subheading">OTT Platform</h4>
+            <div class="pill-group" id="ott-pills-container">
+              <!-- Dynamically Rendered OTTs -->
+            </div>
           </div>
         </div>
       </div>

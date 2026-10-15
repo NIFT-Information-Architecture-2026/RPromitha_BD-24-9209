@@ -14,7 +14,7 @@ This document consolidates all creative choices, structural decisions, UX framew
 ## 2. Core Vision & Product Identity
 - **App Name**: **Movie Vibe**
 - **Core Concept**: Emotion-first movie discovery platform where users choose movies by current mood/vibe, filter by multi-selected languages & OTT availability, listen to ambient soundscapes, read/post polaroid reviews with famous dialogues, and curate watchlists.
-- **Visual & Audio Aesthetic**: Cinematic Dark Mode with glowing poster cards, Polaroid Film-Strip Reviews, and **9 Vibe Ambient Soundscapes**.
+- **Visual & Audio Aesthetic**: Cinematic Dark Mode with glowing poster cards, Polaroid Film-Strip Reviews, **9 Vibe Ambient Soundscapes**, and **Curated Cinematic Backgrounds** (vintage burgundy film reel for main menu, radiant theatrical curtain glow for vibe selection card, and coiled sparkling 35mm film strips).
 
 ---
 
