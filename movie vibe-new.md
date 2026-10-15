@@ -48,10 +48,10 @@ This document consolidates all creative choices, structural decisions, UX framew
 - Personal thought / commentary line (`💬 "Whenever I feel a little low, I'd watch this movie."`).
 - Action footer (`[ ❤️ 83 Likes ]` `[ + Add to watchlist ]`).
 
-### 3.4 Navigation & Filters
+### 3.4 Collaborative Watchlist & Navigation
 - **Gateway Entry**: Choice between `YES, I HAVE A VIBE` vs `NO, SHOW TOP 5`.
 - **Multi-Select Language Filtering**: Toggle multiple languages simultaneously.
-- **Watchlist Slide-Out Side Panel**: Right-hand drawer panel.
+- **Collaborative Watchlist Slide-Out Side Panel**: Right-hand drawer panel allowing users to curate movies and collaborate with friends (`Shared Binge Crew`), inviting friends by handle to share and co-curate movie watchlists.
 
 ---
 

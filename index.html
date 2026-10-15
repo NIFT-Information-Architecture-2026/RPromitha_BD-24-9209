@@ -27,7 +27,7 @@
 
         <button class="top-picks-btn" id="btn-top-picks-nav">🌟 Today's Top 5</button>
         <button class="watchlist-btn" id="btn-open-watchlist">
-          🔖 Watchlist <span class="badge" id="watchlist-count">0</span>
+          🔖 Shared Watchlist <span class="badge" id="watchlist-count">0</span>
         </button>
       </div>
     </div>
@@ -41,7 +41,7 @@
       <div class="hero-card">
         <span class="hero-tag">FILM CURATION BY MOOD & SOUNDSCAPES</span>
         <h1 class="hero-title">Are you in a specific mood today?</h1>
-        <p class="hero-subtitle">Tell us how you're feeling to unlock movie recommendations & immersive ambient soundscapes, or let us curate today's top picks.</p>
+        <p class="hero-subtitle">Tell us how you're feeling to unlock movie recommendations, ambient soundscapes, & collaborative watchlists with friends.</p>
 
         <div class="hero-buttons">
           <button class="btn btn-primary" id="btn-yes-vibe">✨ Yes, I have a vibe</button>
@@ -94,15 +94,31 @@
 
   </main>
 
-  <!-- Watchlist Side Drawer -->
+  <!-- Collaborative Watchlist Side Drawer -->
   <div class="drawer-overlay hidden" id="drawer-overlay"></div>
   <aside class="watchlist-drawer hidden" id="watchlist-drawer">
     <div class="drawer-header">
-      <h2>🔖 My Watchlist</h2>
+      <h2>👥 Collaborative Watchlist</h2>
       <button class="close-drawer-btn" id="btn-close-watchlist">&times;</button>
     </div>
+
+    <!-- Collaborators Header Section -->
+    <div class="collaborators-section">
+      <div class="collab-title-row">
+        <span class="collab-label">Shared Binge Crew:</span>
+        <button class="invite-collab-btn" id="btn-invite-friend">+ Invite Friend</button>
+      </div>
+      <div class="collab-avatars-list" id="collab-avatars-container">
+        <!-- Rendered Collaborator Badges -->
+      </div>
+      <div class="collab-invite-box hidden" id="collab-invite-box">
+        <input type="text" id="invite-handle-input" placeholder="Enter friend's handle (e.g. @ananya_)" class="collab-input">
+        <button class="btn btn-primary btn-sm" id="btn-add-collaborator">Add</button>
+      </div>
+    </div>
+
     <div class="drawer-body" id="watchlist-items-container">
-      <p class="empty-state">No movies saved yet. Click "+ Watchlist" on any movie card to save it here!</p>
+      <p class="empty-state">No movies saved yet. Click "+ Watchlist" on any movie card to add to your shared list!</p>
     </div>
   </aside>
 

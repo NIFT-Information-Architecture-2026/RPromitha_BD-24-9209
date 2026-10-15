@@ -229,6 +229,14 @@ const btnCloseWatchlist = document.getElementById("btn-close-watchlist");
 const watchlistCountBadge = document.getElementById("watchlist-count");
 const watchlistItemsContainer = document.getElementById("watchlist-items-container");
 
+// Collaborative Watchlist Elements & State
+let collaborators = ["@you (Owner)", "@ananya_"];
+const btnInviteFriend = document.getElementById("btn-invite-friend");
+const collabInviteBox = document.getElementById("collab-invite-box");
+const btnAddCollaborator = document.getElementById("btn-add-collaborator");
+const inviteHandleInput = document.getElementById("invite-handle-input");
+const collabAvatarsContainer = document.getElementById("collab-avatars-container");
+
 const reviewModalOverlay = document.getElementById("review-modal-overlay");
 const btnCloseReviewModal = document.getElementById("btn-close-review-modal");
 const btnCancelReview = document.getElementById("btn-cancel-review");
@@ -241,6 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderVibePills();
   renderLanguagePills();
   renderOttPills();
+  renderCollaborators();
   setupEventListeners();
 });
 
@@ -367,6 +376,26 @@ function setupEventListeners() {
   btnOpenWatchlist.addEventListener("click", toggleWatchlistDrawer);
   btnCloseWatchlist.addEventListener("click", toggleWatchlistDrawer);
   drawerOverlay.addEventListener("click", toggleWatchlistDrawer);
+
+  // Collaborative Watchlist Controls
+  if (btnInviteFriend) {
+    btnInviteFriend.addEventListener("click", () => {
+      collabInviteBox.classList.toggle("hidden");
+      if (!collabInviteBox.classList.contains("hidden")) {
+        inviteHandleInput.focus();
+      }
+    });
+  }
+
+  if (btnAddCollaborator) {
+    btnAddCollaborator.addEventListener("click", handleAddCollaborator);
+    inviteHandleInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleAddCollaborator();
+      }
+    });
+  }
 
   // Review Modal Controls
   btnCloseReviewModal.addEventListener("click", closeReviewModal);
@@ -566,6 +595,27 @@ function renderWatchlistItems() {
 function toggleWatchlistDrawer() {
   watchlistDrawer.classList.toggle("hidden");
   drawerOverlay.classList.toggle("hidden");
+}
+
+function renderCollaborators() {
+  if (!collabAvatarsContainer) return;
+  collabAvatarsContainer.innerHTML = collaborators.map((c, i) => `
+    <span class="collab-chip ${i === 0 ? 'owner' : ''}">
+      ${i === 0 ? '👑' : '👤'} ${c}
+    </span>
+  `).join("");
+}
+
+function handleAddCollaborator() {
+  const handle = inviteHandleInput.value.trim();
+  if (!handle) return;
+  const formattedHandle = handle.startsWith("@") ? handle : `@${handle}`;
+  if (!collaborators.includes(formattedHandle)) {
+    collaborators.push(formattedHandle);
+    renderCollaborators();
+  }
+  inviteHandleInput.value = "";
+  collabInviteBox.classList.add("hidden");
 }
 
 // Review Modal Logic

@@ -679,6 +679,88 @@ body {
   align-items: center;
 }
 
+/* Collaborative Watchlist Crew Styles */
+.collaborators-section {
+  padding: 1rem 1.5rem;
+  background: rgba(10, 11, 16, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.collab-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.collab-label {
+  font-size: 0.8rem;
+  color: var(--text-gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.invite-collab-btn {
+  background: rgba(229, 169, 60, 0.15);
+  border: 1px dashed var(--text-gold);
+  color: var(--text-gold);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.invite-collab-btn:hover {
+  background: var(--text-gold);
+  color: #111;
+}
+
+.collab-avatars-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.collab-chip {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3px 9px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.collab-chip.owner {
+  border-color: var(--text-gold);
+  color: var(--text-gold);
+}
+
+.collab-invite-box {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.collab-input {
+  flex-grow: 1;
+  background: var(--bg-dark);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+}
+
 .close-drawer-btn, .close-modal-btn {
   background: none;
   border: none;
