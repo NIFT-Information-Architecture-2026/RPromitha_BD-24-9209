@@ -18,7 +18,13 @@ This document consolidates all creative choices, structural decisions, UX framew
 
 ---
 
-## 3. Approved 9 Vibe Soundscapes & Features
+## 3. Approved Features & Visual Gateway
+
+### 3.0 Spiral Eyes Main Menu Gateway (Hypnotic Character Art & Eye Callouts)
+- **Main Menu Art**: Features the character with hypnotic spiral eyes (`spiral_mind_vibe.jpg`), capturing decision fatigue.
+- **Eye Beam Callout Boxes**:
+  - Coming out of left eye: An interactive pointer ray leads to **"Find your vibe"** (opens the 9 vibe choices & filters).
+  - Coming out of right eye: An interactive pointer ray leads to **"i don't have a specific vibe"** (takes user to Today's Top 5 Picks).
 
 ### 3.1 Ambient Soundscapes for 9 Vibes
 1. 😂 **Hilarious**: Upbeat brass horns 🎺

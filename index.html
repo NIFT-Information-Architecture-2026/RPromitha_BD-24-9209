@@ -36,17 +36,46 @@
   <!-- Main Container -->
   <main class="main-content">
     
-    <!-- Hero Gateway Section -->
+    <!-- Hero Gateway Section with Spiral Eyes Character (Matching Sketch) -->
     <section class="gateway-hero" id="gateway-hero">
-      <div class="hero-card">
-        <span class="hero-tag">FILM CURATION BY MOOD & SOUNDSCAPES</span>
-        <h1 class="hero-title">Are you in a specific mood today?</h1>
-        <p class="hero-subtitle">Tell us how you're feeling to unlock movie recommendations, ambient soundscapes, & collaborative watchlists with friends.</p>
+      <div class="spiral-main-menu-card">
+        
+        <div class="spiral-visual-stage">
+          <img src="assets/backgrounds/spiral_mind_vibe.jpg" alt="Hypnotic Spiral Eyes" class="spiral-character-art">
 
-        <div class="hero-buttons">
-          <button class="btn btn-primary" id="btn-yes-vibe">✨ Yes, I have a vibe</button>
-          <button class="btn btn-secondary" id="btn-no-mood">🎲 No mood? Show Top 5 Picks</button>
+          <!-- SVG Ray lines coming directly out of the spiral eyes -->
+          <svg class="eye-rays-canvas" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <!-- Left Eye Ray -->
+            <line x1="44" y1="39" x2="16" y2="24" class="eye-beam-line beam-left-line" />
+            <circle cx="44" cy="39" r="2" class="eye-pulsing-node" />
+
+            <!-- Right Eye Ray -->
+            <line x1="58" y1="32" x2="74" y2="76" class="eye-beam-line beam-right-line" />
+            <circle cx="58" cy="32" r="2" class="eye-pulsing-node" />
+          </svg>
+
+          <!-- Text Box 1 coming out of left eye: Find your vibe -->
+          <div class="eye-callout-anchor anchor-left">
+            <button class="eye-speech-box box-find-vibe" id="btn-yes-vibe">
+              <span class="box-badge">✨ CHOOSE MOOD</span>
+              <span class="box-main-text">Find your vibe</span>
+            </button>
+          </div>
+
+          <!-- Text Box 2 coming out of right eye: i don't have a specific vibe -->
+          <div class="eye-callout-anchor anchor-right">
+            <button class="eye-speech-box box-no-vibe" id="btn-no-mood">
+              <span class="box-badge">🎲 UNCERTAIN?</span>
+              <span class="box-main-text">i don't have a specific vibe</span>
+            </button>
+          </div>
         </div>
+
+        <div class="spiral-menu-footer">
+          <span class="hero-tag">FILM CURATION BY MOOD & AMBIENT SOUNDSCAPES</span>
+          <h2 class="spiral-headline">Overwhelmed by choices? Pick a frequency from within.</h2>
+        </div>
+
       </div>
     </section>
 

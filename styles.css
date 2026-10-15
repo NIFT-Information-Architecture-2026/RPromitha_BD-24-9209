@@ -124,75 +124,176 @@ body {
   border-radius: 10px;
 }
 
-/* Gateway Hero */
+/* Spiral Eyes Main Menu Gateway (Matching Notebook Sketch) */
 .gateway-hero {
-  max-width: 960px;
-  margin: 3rem auto 2rem;
+  max-width: 980px;
+  margin: 2rem auto 2.5rem;
   padding: 0 1.5rem;
   text-align: center;
 }
 
-.hero-card {
+.spiral-main-menu-card {
   position: relative;
-  background: radial-gradient(circle at center, rgba(14, 16, 26, 0.72) 0%, rgba(35, 8, 16, 0.55) 60%, rgba(10, 11, 16, 0.82) 100%),
+  background: radial-gradient(circle at center, rgba(32, 18, 10, 0.9) 0%, rgba(10, 11, 16, 0.95) 75%),
               url('assets/backgrounds/hero_reel_burgundy.png') right bottom / cover no-repeat;
-  border: 1.5px solid rgba(229, 169, 60, 0.45);
-  border-radius: 24px;
-  padding: 4rem 2.5rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(180, 20, 40, 0.35);
-  overflow: hidden;
+  border: 1.5px solid rgba(229, 169, 60, 0.4);
+  border-radius: 28px;
+  padding: 2.5rem 1.5rem;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(230, 140, 20, 0.25);
+  overflow: visible;
 }
 
-.hero-card::before {
-  content: '';
+.spiral-visual-stage {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+}
+
+.spiral-character-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 193, 7, 0.55);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.85), 0 0 35px rgba(240, 140, 10, 0.35);
+  display: block;
+}
+
+/* SVG Ray lines coming directly from eyes */
+.eye-rays-canvas {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 85% 90%, rgba(229, 169, 60, 0.3) 0%, transparent 45%),
-              radial-gradient(circle at 15% 10%, rgba(255, 51, 102, 0.25) 0%, transparent 45%);
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: 5;
 }
 
-.hero-card > * {
-  position: relative;
-  z-index: 2;
+.eye-beam-line {
+  stroke: #FFC107;
+  stroke-width: 3.5;
+  stroke-dasharray: 6, 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px #FFC107);
+  animation: beamPulse 1.8s infinite linear;
 }
 
-.hero-tag {
-  color: var(--text-gold);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  display: block;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+.beam-right-line {
+  stroke: var(--accent-neon);
+  filter: drop-shadow(0 0 6px var(--accent-neon));
 }
 
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: 2.7rem;
-  margin-bottom: 1.2rem;
-  line-height: 1.2;
-  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.8);
+.eye-pulsing-node {
+  fill: #FFF;
+  stroke: var(--text-gold);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 8px #FFC107);
 }
 
-.hero-subtitle {
-  color: #E2E8F0;
-  font-size: 1.15rem;
-  max-width: 650px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.6;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+@keyframes beamPulse {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -20; }
 }
 
-.hero-buttons {
+/* Anchors for the 2 Eye Text Boxes */
+.eye-callout-anchor {
+  position: absolute;
+  z-index: 10;
+}
+
+.anchor-left {
+  top: 8%;
+  left: -8%;
+}
+
+.anchor-right {
+  bottom: 12%;
+  right: -8%;
+}
+
+/* Eye Speech Boxes */
+.eye-speech-box {
+  background: rgba(14, 16, 26, 0.94);
+  border: 2px solid var(--text-gold);
+  color: var(--text-main);
+  padding: 1rem 1.4rem;
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 193, 7, 0.4);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.box-find-vibe {
+  border-color: #FFC107;
+  background: linear-gradient(135deg, rgba(20, 22, 34, 0.95) 0%, rgba(55, 30, 8, 0.95) 100%);
+}
+
+.box-no-vibe {
+  border-color: var(--accent-neon);
+  background: linear-gradient(135deg, rgba(20, 22, 34, 0.95) 0%, rgba(48, 10, 22, 0.95) 100%);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(255, 51, 102, 0.4);
+}
+
+.eye-speech-box:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 193, 7, 0.7);
+}
+
+.box-no-vibe:hover {
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 51, 102, 0.7);
+}
+
+.box-badge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--text-gold);
+}
+
+.box-no-vibe .box-badge {
+  color: var(--accent-neon);
+}
+
+.box-main-text {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.spiral-menu-footer {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.spiral-headline {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #E2E8F0;
+  margin-top: 0.5rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .anchor-left {
+    top: 2%;
+    left: 2%;
+  }
+  .anchor-right {
+    bottom: 4%;
+    right: 2%;
+  }
+  .box-main-text {
+    font-size: 1.05rem;
+  }
 }
 
 .btn {
